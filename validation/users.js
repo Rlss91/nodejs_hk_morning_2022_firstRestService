@@ -25,9 +25,10 @@ const signupObj = {
 };
 
 //signup schema
-const schema = Joi.object(signupObj);
+const schemaSignup = Joi.object(signupObj);
 
 //login schema
 const schemaLogin = Joi.object(loginObj);
 
-module.exports.schema = schema;
+module.exports.schemaSignup = schemaSignup;
+module.exports.schemaLogin = schemaLogin;

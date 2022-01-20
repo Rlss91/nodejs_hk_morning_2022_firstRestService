@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post("/signup", async (req, res) => {
   try {
-    const value = await UserSchema.schema.validateAsync(req.body, {
+    const value = await UserSchema.schemaSignup.validateAsync(req.body, {
       abortEarly: false,
     });
     value.password = await bcrypt.createHash(value.password);
