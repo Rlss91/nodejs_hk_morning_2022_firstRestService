@@ -1,0 +1,6 @@
+{
+  "dbConfig": {
+    "connectionString": "mongodb://localhost/fmsdb"
+  },
+  "jwtSecretKey": "this is secret key that should not be visible to anyone!"
+}
