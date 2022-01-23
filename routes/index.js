@@ -1,9 +1,13 @@
 const express = require("express");
+const path = require("path");
 const router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res) {
-  res.json({ msg: "json was send" });
+  // res.json({ msg: "json was send" });
+  res.sendFile(
+    path.join(__dirname, "..", "public", "first-angular-app", "index.html")
+  );
 });
 
 module.exports = router;
