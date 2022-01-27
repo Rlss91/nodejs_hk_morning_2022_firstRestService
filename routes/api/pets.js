@@ -58,8 +58,14 @@ router.put("/", async (req, res) => {
       value._id
     );
     console.log(petData);
+    if (petData) {
+      res.json({ status: "ok" });
+    } else {
+      throw { status: "fail", msg: "cant find this id" };
+    }
   } catch (err) {
     console.log(err);
+    res.status(400).json(err);
   }
 });
 
