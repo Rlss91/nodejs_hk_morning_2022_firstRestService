@@ -4,10 +4,12 @@ const authMiddleware = require("../../middleware/auth");
 
 const authRouter = require("./auth");
 const userRouter = require("./user");
+const petRouter = require("./pets");
 const router = express.Router();
 
 router.use("/auth", authRouter);
 router.use("/user", authMiddleware, userRouter);
+router.use("/pet", petRouter);
 
 module.exports = router;
 
