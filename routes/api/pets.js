@@ -14,8 +14,10 @@ const petsSchema = require("../../validation/pets");
 router.get("/", async (req, res) => {
   try {
     const userData = await userModel.selectUserByEmail(req.jwtData.email);
-    const petsData = await petsModel.selectAllPetsByOwner(userData._id);
-    console.log(petsData);
+    console.log("userData", userData);
+    const petsData = await petsModel.selectAllPetsByOwner(userData[0]._id);
+    console.log("petsData", petsData);
+    res.json(petsData);
   } catch (err) {
     console.log(err);
   }
@@ -42,6 +44,22 @@ router.post("/", async (req, res) => {
   } catch (err) {
     console.log("err from pets", err);
     res.status(400).json(err);
+  }
+});
+
+router.put("/", async (req, res) => {
+  try {
+    //! add joi validation
+    const value = req.body;
+    const petData = await petsModel.updatePetById(
+      value.color,
+      value.type,
+      value.name,
+      value._id
+    );
+    console.log(petData);
+  } catch (err) {
+    console.log(err);
   }
 });
 

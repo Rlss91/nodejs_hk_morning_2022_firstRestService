@@ -18,10 +18,21 @@ const createPets = (color, type, name, owner) => {
 };
 
 const selectAllPetsByOwner = (idowner) => {
-  return Pets.find({ owner: new ObjectId(idowner) });
+  //   return Pets.find({ owner: new ObjectId(idowner) });
+  return Pets.find({ owner: idowner });
+};
+
+const updatePetById = (color, type, name, id) => {
+  // return Pets.findByIdAndUpdate(id, { color:color, type:type, name:name, owner:owner });
+  return Pets.findByIdAndUpdate(
+    id,
+    { color, type, name },
+    { returnDocument: "after" }
+  );
 };
 
 module.exports = {
   createPets,
   selectAllPetsByOwner,
+  updatePetById,
 };
