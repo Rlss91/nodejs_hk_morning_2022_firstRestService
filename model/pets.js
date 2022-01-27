@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+const ObjectId = mongoose.Types.ObjectId;
 const Schema = mongoose.Schema;
 
 const petsSchema = new Schema({
@@ -16,6 +17,11 @@ const createPets = (color, type, name, owner) => {
   return newPets.save();
 };
 
+const selectAllPetsByOwner = (idowner) => {
+  return Pets.find({ owner: new ObjectId(idowner) });
+};
+
 module.exports = {
   createPets,
+  selectAllPetsByOwner,
 };

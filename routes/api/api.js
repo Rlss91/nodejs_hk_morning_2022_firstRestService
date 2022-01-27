@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.use("/auth", authRouter);
 router.use("/user", authMiddleware, userRouter);
-router.use("/pet", petRouter);
+router.use("/pet", authMiddleware, petRouter);
 
 module.exports = router;
 
