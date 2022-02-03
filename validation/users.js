@@ -15,6 +15,7 @@ const loginObj = {
     .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
     .messages({
       "string.pattern.base": "please enter valid password",
+      "any.required": "password is required",
     })
     .required(),
 };

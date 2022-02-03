@@ -45,7 +45,15 @@ router.post("/login", async (req, res) => {
     res.json({ status: "error", msg: "please check your email or password" });
   } catch (err) {
     console.log(err);
-    res.json(err);
+    if (err.details) {
+      let errToSend = [];
+      for (let error of err.details) {
+        errToSend = [...errToSend, error.message];
+      }
+      res.status(400).json(errToSend);
+      return;
+    }
+    res.status(400).json(err);
   }
 });
 

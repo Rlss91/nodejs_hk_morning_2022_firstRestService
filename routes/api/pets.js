@@ -69,4 +69,14 @@ router.put("/", async (req, res) => {
   }
 });
 
+router.delete("/", async (req, res) => {
+  try {
+    const value = await petsSchema.deletePetSchema(req.body);
+    await petsModel.deletePetById(value.id);
+    res.json({ status: "ok", msg: "deleted" });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 module.exports = router;

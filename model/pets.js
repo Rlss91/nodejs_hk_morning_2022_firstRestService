@@ -31,8 +31,13 @@ const updatePetById = (color, type, name, id) => {
   );
 };
 
+const deletePetById = (_id) => {
+  return Pets.deleteOne({ _id });
+};
+
 module.exports = {
   createPets,
   selectAllPetsByOwner,
   updatePetById,
+  deletePetById,
 };
