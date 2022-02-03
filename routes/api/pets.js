@@ -76,10 +76,10 @@ router.delete("/", async (req, res) => {
     if (deletedCount == 1) {
       res.json({ status: "ok", msg: "deleted" });
     } else {
-      throw { status: "fail", msg: "id not found" };
+      throw { msg: "id not found" };
     }
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({ ...err, status: "fail" });
   }
 });
 
